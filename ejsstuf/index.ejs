@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Caption Generator</title>
+    <link rel="stylesheet" href="/ejsstuf/pow.css">
+</head>
+<body>
+    <h1>Random Caption Generator</h1>
+
+    <% images.forEach(imageObj => { %>
+        <div class="container">
+            <!-- Display image from the root -->
+            <img src="/<%= imageObj.image %>" alt="Funny coding image">
+            <ul>
+                <% imageObj.captions.forEach((caption, index) => { %>
+                    <li id="list">
+                        <%= caption.caption %> 
+                        <!-- upvote/downvote buttons here -->
+                        <form action="/change-votes" method="POST">
+                            <input type="hidden" name="imageName" value="<%= imageObj.image %>">
+                            <input type="hidden" name="captionNumber" value="<%= index %>">
+                            <button type="submit" name="voteChange" value="1">Upvote</button>
+                            <button type="submit" name="voteChange" value="-1">Downvote</button>
+                        </form>
+                        <span>Votes: <%= caption.votes %></span>
+                    </li>
+                <% }); %>
+            </ul>
+
+            <form action="/add-caption" method="POST">
+                <input type="hidden" name="imageName" value="<%= imageObj.image %>">
+                <input type="text" name="captionText" placeholder="Add a new caption" required>
+                <button type="submit">Add Caption</button>
+            </form>
+        </div>
+    <% }); %>
+
+</body>
+</html>

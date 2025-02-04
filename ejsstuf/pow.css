@@ -1,0 +1,40 @@
+body{
+    text-align: center;
+    background-color: #272533 ;
+    color: #ffffff;
+}
+
+#list{
+    list-style: none;
+
+}
+
+.container {
+
+    width: 40%;
+    margin-left: 30%;
+}
+
+button{
+    background-color: rgba(140, 140, 140, 0.05) ;
+    color: #cdcdcd;
+    border-radius: 15px;
+    width: 20%;
+    height: 15%;
+    font-size: 15px;
+
+}
+
+button:hover{
+    background-color:rgb(119, 119, 119) ;
+    color: #282626;
+    border-radius: 15px;
+    width: 20%;
+    height: 15%;
+    font-size: 15px;  
+    border: none;
+}
+
+img{
+    border-radius: 25%;
+}
