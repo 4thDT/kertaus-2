@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/pow.css" />
+    <title>Meemigeneraattori</title>
+  </head>
+  <body>
+    <h1>Meemigeneraattori</h1>
+    <div class="meme">
+      <img src="images/<%= image %>" alt="Meme Image" />
+      <p><%= caption %></p>
+      <p><%= votes %></p>
+      <form action="/change-votes" method="POST">
+        <input type="hidden"name="imageName"value="<%= image.split('/').pop() %>"/>
+        <input type="hidden"name="captionNumber"value="<%= captionNumber %>"/>
+        <button type="submit"name="voteChange" value="1">👍</button>
+        <button type="submit"name="voteChange"value="-1">👎 </button>
+      </form>
+    </div>
+    <form action="/add-caption" method="POST">
+      <input
+        type="text"
+        name="captionText"
+        placeholder="Lisää uusi teksti"
+        required
+      />
+      <input type="hidden" name="imageName" value="<%= image %>" />
+      <button type="submit">Lisää</button>
+    </form>
+  </body>
+</html>
